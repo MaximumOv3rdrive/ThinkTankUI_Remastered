@@ -3,19 +3,22 @@ local TTUIRM = E:NewModule("ThinkTankUI Remastered", "AceConsole-3.0");
 local EP = LibStub("LibElvUIPlugin-1.0")
 local addon = ...
 
-local _G = _G
+local playerName = UnitName("player")
+local profileName = playerName.."-ThinkTankUI"
+local profileName2 = playerName.."-ThinkTankUI Heals"
+
 local pairs, tinsert, tremove, unpack = pairs, tinsert, tremove, unpack
 local format = format
 
 local IsAddOnLoaded = IsAddOnLoaded
 local GetAddOnMetadata = GetAddOnMetadata
-local GetCVarBool, StopMusic, ReloadUI = GetCVarBool, StopMusic, ReloadUI, TTUIRM
+local GetCVarBool, StopMusic, ReloadUI = GetCVarBool, StopMusic, ReloadUI
 
 		
 local function SetupTTUIRMLayout()
 	E.private.auras.enable = false;
-	if(not ElvDB.profiles["ThinkTankUI"]) then
-		ElvDB.profiles["ThinkTankUI"] = {
+	if(not ElvDB.profiles[profileName]) then
+		ElvDB.profiles[profileName] = {
 			["databars"] = {
 				["artifact"] = {
 					["height"] = 175,
@@ -503,15 +506,15 @@ local function SetupTTUIRMLayout()
 		}
 		
 		local db = LibStub("AceDB-3.0"):New(ElvDB, nil, true)
-			db:SetProfile("ThinkTankUI")
+			db:SetProfile(profileName)
 		end
 	end		
 
 	
 local function SetupTTUIRMLayout2()
 	E.private.auras.enable = false;
-	if(not ElvDB.profiles["ThinkTankUI Heals"]) then
-		ElvDB.profiles["ThinkTankUI Heals"] = {
+	if(not ElvDB.profiles[profileName2]) then
+		ElvDB.profiles[profileName2] = {
 			["databars"] = {
 				["artifact"] = {
 					["height"] = 175,
@@ -1001,7 +1004,7 @@ local function SetupTTUIRMLayout2()
 		}
 		
 		local db = LibStub("AceDB-3.0"):New(ElvDB, nil, true)
-			db:SetProfile("ThinkTankUI Heals")
+			db:SetProfile(profileName2)
 		end
 	end		
 
@@ -1015,16 +1018,16 @@ local function SetupAddons()
 		tinsert(addonNames, 'Skada')
 	end
 	
-	--	Details - Settings
-	if IsAddOnLoaded("Details") then
-		TTUIRM:LoadDetailsProfile()
-		tinsert(addonNames, 'Details')
-	end
-	
 	-- Deadly Boss Mods
 	if IsAddOnLoaded("DBM-Core") then
 		TTUIRM:LoadDBMProfile()
 		tinsert(addonNames, 'Deadly Boss Mods')
+	end
+	
+	--	Details - Settings
+	if IsAddOnLoaded("Details") then
+		TTUIRM:LoadDetailsProfile()
+		tinsert(addonNames, 'Details')
 	end
 	
 	--	Raven - Settings
@@ -1134,8 +1137,7 @@ TTUIRM.TTUIRMInstallTable = {
 function TTUIRM:Initialize()
 	TTUIRM.Version = GetAddOnMetadata("ElvUI_ThinkTankUI_RM", "Version")
 	if E.private.TTUIRMinstall_complete == nil then
-		E:GetModule("PluginInstaller"):Queue(addon.TTUIRMInstallTable)
+		E:GetModule("PluginInstaller"):Queue(TTUIRM.TTUIRMInstallTable)
 	end
 end
-
-E:RegisterModule(TTUIRM:GetName())
+E:RegisterModule(TTUIRM:GetName()) 
