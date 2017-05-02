@@ -14,7 +14,8 @@ local IsAddOnLoaded = IsAddOnLoaded
 local GetAddOnMetadata = GetAddOnMetadata
 local GetCVarBool, StopMusic, ReloadUI = GetCVarBool, StopMusic, ReloadUI
 
-		
+
+
 local function SetupTTUIRMLayout()
 	E.private.auras.enable = false;
 	if(not ElvDB.profiles[profileName]) then
@@ -1067,6 +1068,7 @@ local function InstallComplete()
 	ReloadUI()
 end
 
+
 TTUIRM.TTUIRMInstallTable = {
 	Name = "|cff9482c9ThinkTankUI Remastered|r",
 	Title = L["|cff9482c9ThinkTankUI Remastered|r Installation"],
@@ -1084,7 +1086,7 @@ TTUIRM.TTUIRMInstallTable = {
 			PluginInstallFrame.SubTitle:SetText(L["Layout"])
 			PluginInstallFrame.Desc1:SetText(L["This is the standard layout for ThinkTankUI Remastered."])
 			PluginInstallFrame.Desc2:SetText(L["This is the Dps/Tank Profile Creation for |cff9482c9ThinkTankUI Remastered|r. Click the Button to create a new Profile."])
-			PluginInstallFrame.Desc3:SetText(L["Importance: |cffFF0000High|r"])
+			PluginInstallFrame.Desc3:SetFormattedText(L["Importance: |cffFF0000High|r"])
 
 			PluginInstallFrame.Option1:Show()
 			PluginInstallFrame.Option1:SetScript('OnClick', function() SetupTTUIRMLayout(); end) 
