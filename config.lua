@@ -13,7 +13,7 @@ end
 
 
 function TTUIRM:LoadOptions()
-    E:GetModule("PluginInstaller"):Queue(TTUIRM.TTUIRMInstallTable); E:ToggleConfig();
+    E:GetModule("PluginInstaller"):Queue(TTUIRM.TTUIRMInstallTable);
 end
 
 function TTUIRM:LoadCommands()
