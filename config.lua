@@ -7,24 +7,21 @@ local format = format
 local tinsert = table.insert
 
 
-function TTUIRM.InsertTable()
-	E.Options.args.ThinkTankUI = {
-		order = 100,
-		type = "group",
-		name = "ThinkTankUI",
-		args = {
-			install = {
-				order = 1,
-				type = "execute",
-				name = L["Install"],
-				func = function() E:GetModule("PluginInstaller"):Queue(addon.TTUIRMInstallTable); E:ToggleConfig(); end,
-			},
-		},
-	}
+function TTUIRM:Initialize()
+	EP:RegisterPlugin(addon, TTUIRM.InsertOptions) 
+end
+
+
+function TTUIRM:LoadOptions()
+    E:GetModule("PluginInstaller"):Queue(TTUIRM.TTUIRMInstallTable); E:ToggleConfig();
+end
+
+function TTUIRM:LoadCommands()
+    self:RegisterChatCommand("ttuirm", "LoadOptions")
 end
 
 function TTUIRM:Initialize()
-	EP:RegisterPlugin(addon, TTUIRM.InsertTable) 
-end
 
-E:RegisterModule(TTUIRM:GetName())
+  self:LoadCommands()
+  
+  end
