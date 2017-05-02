@@ -1136,10 +1136,21 @@ TTUIRM.TTUIRMInstallTable = {
 	StepTitleTextJustification = "RIGHT",
 
 }
+
+function TTUIRM:LoadOptions()
+    E:GetModule("PluginInstaller"):Queue(TTUIRM.TTUIRMInstallTable);
+end
+
+function TTUIRM:LoadCommands()
+    self:RegisterChatCommand("ttuirm", "LoadOptions")
+end
+
 function TTUIRM:Initialize()
 	TTUIRM.Version = GetAddOnMetadata("ElvUI_ThinkTankUI_RM", "Version")
 	if E.private.TTUIRMinstall_complete == nil then
 		E:GetModule("PluginInstaller"):Queue(TTUIRM.TTUIRMInstallTable)
+	
 	end
+	self:LoadCommands()
 end
 E:RegisterModule(TTUIRM:GetName()) 
