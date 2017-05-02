@@ -1,5 +1,5 @@
 local E, L, V, P, G = unpack(ElvUI);
-local TTUIRM = E:GetModule('ThinkTankUI Remastered', 'AceHook-3.0', 'AceEvent-3.0', 'AceTimer-3.0');
+local TTUIRM = E:GetModule('ThinkTankUI Remastered');
 local EP = LibStub("LibElvUIPlugin-1.0")
 local addon = ...
 
@@ -19,8 +19,6 @@ function TTUIRM:LoadCommands()
 end
 
 function TTUIRM:Initialize()
-	EP:RegisterPlugin(addon, TTUIRM.InsertOptions)
-	
 	self:LoadCommands()
  end
  
