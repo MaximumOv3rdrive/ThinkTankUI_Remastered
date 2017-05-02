@@ -1,5 +1,5 @@
 local E, L, V, P, G = unpack(ElvUI)
-local TTUIRM = E:NewModule("ThinkTankUI Remastered", "AceConsole-3.0");
+local TTUIRM = E:NewModule('ThinkTankUI Remastered', 'AceHook-3.0', 'AceEvent-3.0', 'AceTimer-3.0', "AceConsole-3.0");
 local EP = LibStub("LibElvUIPlugin-1.0")
 local addon = ...
 
