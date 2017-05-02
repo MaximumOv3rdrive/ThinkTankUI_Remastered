@@ -7,12 +7,10 @@ local format = format
 local tinsert = table.insert
 
 
-function TTUIRM:Initialize()
-	EP:RegisterPlugin(addon, TTUIRM.InsertOptions) 
-end
 
 
 function TTUIRM:LoadOptions()
+	TTUIRM.Version = GetAddOnMetadata("ElvUI_ThinkTankUI_RM", "Version")
     E:GetModule("PluginInstaller"):Queue(TTUIRM.TTUIRMInstallTable);
 end
 
@@ -21,7 +19,8 @@ function TTUIRM:LoadCommands()
 end
 
 function TTUIRM:Initialize()
-
-  self:LoadCommands()
-  
-  end
+	EP:RegisterPlugin(addon, TTUIRM.InsertOptions)
+	
+	self:LoadCommands()
+ end
+ 
