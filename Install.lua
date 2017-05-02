@@ -1075,7 +1075,7 @@ TTUIRM.TTUIRMInstallTable = {
 	tutorialImage = [[Interface\AddOns\ElvUI_ThinkTankUI_RM\media\textures\ThinkTankUI_Remastered]],
 	Pages = {
 		[1] = function()
-			PluginInstallFrame.SubTitle:SetFormattedText(L["Welcome to ThinkTankUI Remastered |cff00c0faVersion|r %s, for ElvUI %s."], TTUIRM.Version, E.version)
+			PluginInstallFrame.SubTitle:SetFormattedText(L["Welcome to ThinkTankUI [Remastered] |cff00c0faVersion|r %s, for ElvUI %s."], TTUIRM.Version, E.version)
 			PluginInstallFrame.Desc1:SetText(L["By pressing the Continue button, ThinkTankUI Remastered will be applied in your current ElvUI installation.\r|cffff8000 TIP: If you apply the changes in a new profile, you can always change back if you don't like the result.|r"])
 			PluginInstallFrame.Desc2:SetText(L["Please press the continue button to go onto the next step."])
 			PluginInstallFrame.Option1:Show()
